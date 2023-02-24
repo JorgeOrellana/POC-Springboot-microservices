@@ -15,4 +15,4 @@ Order Service, Inventory Service and Notification Service are going to interact 
 
 Synchronous and Asynchronous Communication
 
-min 22 part 1
+min 41 part 1
