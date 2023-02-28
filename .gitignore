@@ -1,5 +1,6 @@
-productservice/.idea
+microservicesparent/.idea
 
+productservice/.idea
 productservice/productservice/.gradle
 productservice/productservice/gradle
 productservice/productservice/build
