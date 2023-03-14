@@ -10,13 +10,13 @@ buildscript {
     }
 }
 
-ext {
-    set('springCloudVersion', "Hoxton.SR6")
-    set('springBootVersion', "3.0.4")
-}
-
 allprojects {
     apply plugin: 'java'
+
+    ext {
+        set('springCloudVersion', "2022.0.1")
+        set('springBootVersion', "3.0.4")
+    }
 }
 
 subprojects {
@@ -25,6 +25,7 @@ subprojects {
 
     repositories {
         mavenCentral()
+        maven { url 'https://artifactory-oss.prod.netflix.net/artifactory/maven-oss-candidates' }
     }
 
     apply plugin: 'java'
@@ -39,6 +40,12 @@ subprojects {
     dependencies {
         testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
         testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
     }
 
     configurations {

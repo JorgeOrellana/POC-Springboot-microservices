@@ -1,6 +1,19 @@
 microservicesparent/.idea
 
-productservice/.idea
-productservice/productservice/.gradle
-productservice/productservice/gradle
-productservice/productservice/build
+microservices/.idea
+microservices/productservice/.gradle
+microservices/productservice/gradle
+microservices/productservice/build
+
+microservices/.idea
+microservices/inventoryservice/.gradle
+microservices/inventoryservice/gradle
+microservices/inventoryservice/build
+
+microservices/.idea
+microservices/orderservice/.gradle
+microservices/orderservice/gradle
+microservices/orderservice/build
+
+microservices/.gradle
+microservices/.idea

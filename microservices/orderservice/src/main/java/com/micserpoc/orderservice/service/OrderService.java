@@ -23,9 +23,7 @@ import java.util.UUID;
 public class OrderService
 {
     private final OrderRepository orderRepository;
-    private final WebClient webClient;
-    @Value("${config.inventory.service.uri}")
-    private final String INVENTORY_SERVICE_URI;
+    private final WebClient.Builder webClientBuilder;
     public void placeOrder(OrderRequestDTO orderRequestDTO)
     {
         Order order = new Order();
@@ -40,8 +38,8 @@ public class OrderService
         List<String> skuCodes = order.getOrderLineItems().stream().map(orderLineItemsParam -> orderLineItemsParam.getSkuCode()).toList();
 
         // call Inventory Service and place order if product is on stock
-        InventoryResponseDTO[] inventoryResponseArray = webClient.get()
-            .uri(INVENTORY_SERVICE_URI+ "/inventory", uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
+        InventoryResponseDTO[] inventoryResponseArray = webClientBuilder.build().get()
+            .uri("http://inventory-service/inventory", uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
             .retrieve()
             .bodyToMono(InventoryResponseDTO[].class)
             .block();
