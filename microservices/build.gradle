@@ -1,0 +1,51 @@
+buildscript {
+    ext {
+        springBootVersion = '3.0.4'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+ext {
+    set('springCloudVersion', "Hoxton.SR6")
+    set('springBootVersion', "3.0.4")
+}
+
+allprojects {
+    apply plugin: 'java'
+}
+
+subprojects {
+    group 'com.micserpoc'
+    version '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    apply plugin: 'java'
+    sourceCompatibility = 17 // sourceCompatibility should be applied after java plugin
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+
+    configurations {
+        providedRuntime
+    }
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    }
+
+    configurations {
+        providedRuntime
+    }
+//
+//    test {
+//        useJUnitPlatform()
+//    }
+}
