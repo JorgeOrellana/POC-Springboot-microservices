@@ -15,5 +15,3 @@ microservices/orderservice/.gradle
 microservices/orderservice/gradle
 microservices/orderservice/build
 
-microservices/.gradle
-microservices/.idea
